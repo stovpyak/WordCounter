@@ -6,12 +6,13 @@ namespace Lib.Test
     [TestClass]
     public class TestAppl
     {
+        const string FileDir = "..\\..\\..\\TestData\\";
+
         [TestMethod]
         public void TestOneWord()
         {
             var fileSource = new FileNameSourceStub();
-            var fileDir = "..\\..\\..\\TestData\\";
-            fileSource.Add(fileDir + "OneWord..txt");
+            fileSource.Add(FileDir + "OneWord..txt");
 
             var appl = new Appl(fileSource);
             var resultSaver = new ResultSaverSpy();
@@ -27,8 +28,7 @@ namespace Lib.Test
         public void TestTwoEqualsWord()
         {
             var fileSource = new FileNameSourceStub();
-            var fileDir = "..\\..\\..\\TestData\\";
-            fileSource.Add(fileDir + "TwoEqualsWords.txt");
+            fileSource.Add(FileDir + "TwoEqualsWords.txt");
 
             var appl = new Appl(fileSource);
             var resultSaver = new ResultSaverSpy();
@@ -44,8 +44,7 @@ namespace Lib.Test
         public void TestTwoEqualsWordTwoLines()
         {
             var fileSource = new FileNameSourceStub();
-            var fileDir = "..\\..\\..\\TestData\\";
-            fileSource.Add(fileDir + "TwoEqualsWordsTwoLines.txt");
+            fileSource.Add(FileDir + "TwoEqualsWordsTwoLines.txt");
 
             var appl = new Appl(fileSource);
             var resultSaver = new ResultSaverSpy();
@@ -61,8 +60,7 @@ namespace Lib.Test
         public void TestTwoDifferentWord()
         {
             var fileSource = new FileNameSourceStub();
-            var fileDir = "..\\..\\..\\TestData\\";
-            fileSource.Add(fileDir + "TwoDifferentWords.txt");
+            fileSource.Add(FileDir + "TwoDifferentWords.txt");
 
             var appl = new Appl(fileSource);
             var resultSaver = new ResultSaverSpy();
@@ -82,9 +80,8 @@ namespace Lib.Test
         public void TestTwoFiles()
         {
             var fileSource = new FileNameSourceStub();
-            var fileDir = "..\\..\\..\\TestData\\";
-            fileSource.Add(fileDir + "TwoDifferentWords.txt");
-            fileSource.Add(fileDir + "OneWord..txt");
+            fileSource.Add(FileDir + "TwoDifferentWords.txt");
+            fileSource.Add(FileDir + "OneWord..txt");
 
             var appl = new Appl(fileSource);
             var resultSaver = new ResultSaverSpy();
