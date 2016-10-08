@@ -108,6 +108,42 @@ namespace Lib.Test
             appl.Execute(resultSaver);
 
             Assert.AreEqual(1693, resultSaver.Items.Count, "words count");
+            var firstWord = resultSaver.Items.First();
+            Assert.AreEqual("глава", firstWord.Word, "word");
+            Assert.AreEqual(6, firstWord.Count, "count");
+        }
+
+        [TestMethod]
+        public void TestTwoBigFiles()
+        {
+            var fileSource = new FileNameSourceStub();
+            fileSource.Add(FileDir + "rihter.txt");
+            fileSource.Add(FileDir + "xunit.txt");
+
+            var appl = new Appl(fileSource);
+            var resultSaver = new ResultSaverSpy();
+            appl.Execute(resultSaver);
+
+            Assert.AreEqual(2020, resultSaver.Items.Count, "words count");
+        }
+
+        [TestMethod]
+        public void TesFourFiles()
+        {
+            var fileSource = new FileNameSourceStub();
+            fileSource.Add(FileDir + "rihter.txt");
+            fileSource.Add(FileDir + "rihter2.txt");
+            fileSource.Add(FileDir + "rihter3.txt");
+            fileSource.Add(FileDir + "rihter4.txt");
+
+            var appl = new Appl(fileSource);
+            var resultSaver = new ResultSaverSpy();
+            appl.Execute(resultSaver);
+
+            Assert.AreEqual(1693, resultSaver.Items.Count, "words count");
+            var firstWord = resultSaver.Items.First();
+            Assert.AreEqual("глава", firstWord.Word, "word");
+            Assert.AreEqual(24, firstWord.Count, "count");
         }
     }
 }

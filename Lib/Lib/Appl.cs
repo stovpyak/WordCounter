@@ -3,6 +3,12 @@ using System.Threading;
 
 namespace Lib
 {
+    /// <summary>
+    /// Вся логика здесь:
+    /// есть три сущности: WordCountQueue, FileAnalizer и Marger - они работают в разных потоках
+    /// FileAnalizer распознает слова в одном файле и результат добавляет в очередь
+    /// Marger извлекает результат анализа одного файла из очереди и добавляет его в "общий" результат
+    /// </summary>
     public class Appl
     {
         private readonly IFileNamesSource _fileNamesSource;
@@ -23,7 +29,7 @@ namespace Lib
                 var analizer = new FileAnalizer(fileName, queue, ApplExceptionHandler);
                 analizer.Execute();
             }
-            // здесь выполнение остановится, пока кто нибудь не просигнализирует об окончании работы
+            // здесь выполнение остановится, пока (marger или exception) не просигнализирует об окончании работы
             _stopEvent.Wait();
 
             if (_wasException != null)

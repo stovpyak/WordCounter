@@ -23,14 +23,14 @@ namespace Lib
 
         public void Execute()
         {
-            ThreadPool.QueueUserWorkItem(Run);
+            ThreadPool.QueueUserWorkItem(SafeRun);
         }
 
-        private void Run(object state)
+        private void SafeRun(object state)
         {
             try
             {
-                SafeRun();
+                Run();
             }
             catch (Exception ex)
             {
@@ -38,8 +38,13 @@ namespace Lib
             }
         }
 
-        private void SafeRun()
+        private void Run()
         {
+            // распознаватель слов без изысков:
+            // если слово в скобках (, то считает его "другим"
+            // не распознает переносов на новую строку
+            // запятые и др. знаки препинания не учитывает
+            // ?
             var result = new WordCount();
             using (var fs = new FileStream(_fileName, FileMode.Open, FileAccess.Read))
             {
