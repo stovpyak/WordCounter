@@ -3,10 +3,8 @@
     /// <summary>
     /// Тот кто будет сохранять результат
     /// </summary>
-    public interface IResultSaver
+    public interface IResultSaver: IWords
     {
-        void Add(string word, int count);
-
         void Save();
     }
 }

@@ -96,5 +96,18 @@ namespace Lib.Test
             Assert.AreEqual("two", wordCount2.Word, "word two");
             Assert.AreEqual(1, wordCount2.Count, "count two");
         }
+
+        [TestMethod]
+        public void TestRihter()
+        {
+            var fileSource = new FileNameSourceStub();
+            fileSource.Add(FileDir + "rihter.txt");
+
+            var appl = new Appl(fileSource);
+            var resultSaver = new ResultSaverSpy();
+            appl.Execute(resultSaver);
+
+            Assert.AreEqual(1693, resultSaver.Items.Count, "words count");
+        }
     }
 }
