@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Lib.Test
@@ -144,6 +147,41 @@ namespace Lib.Test
             var firstWord = resultSaver.Items.First();
             Assert.AreEqual("глава", firstWord.Word, "word");
             Assert.AreEqual(24, firstWord.Count, "count");
+        }
+
+        [TestMethod]
+        public void TesFourFilesSaveToFile()
+        {
+            var fileSource = new FileNameSourceStub();
+            fileSource.Add(FileDir + "rihter.txt");
+            fileSource.Add(FileDir + "rihter2.txt");
+            fileSource.Add(FileDir + "rihter3.txt");
+            fileSource.Add(FileDir + "rihter4.txt");
+
+            var appl = new Appl(fileSource);
+            const string resultFileName = FileDir + "result.txt";
+            var resultSaver = new ResultSaveToFile(resultFileName);
+            appl.Execute(resultSaver);
+
+            var actual = ReadFromFile(resultFileName);
+
+            Assert.AreEqual(1693, actual.Count, "words count");
+            var firstWord = actual.First();
+            Assert.AreEqual("глава", firstWord.Word, "word");
+            Assert.AreEqual(24, firstWord.Count, "count");
+        }
+
+        private IList<WorkCountItem> ReadFromFile(string fileName)
+        {
+            var result = new List<WorkCountItem>();
+            var separator = new Char[] {' '};
+            foreach (string line in File.ReadLines(fileName))
+            {
+                var wordAndCount = line.Split(separator);
+                var item = new WorkCountItem(wordAndCount[0], Int32.Parse(wordAndCount[1]));
+                result.Add(item);
+            }
+            return result;
         }
     }
 }
