@@ -1,4 +1,4 @@
-﻿namespace Lib
+﻿namespace Lib.ResultSaver
 {
     /// <summary>
     /// Тот кто будет сохранять результат.

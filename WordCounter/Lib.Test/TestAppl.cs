@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Lib.ResultSaver;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Lib.Test

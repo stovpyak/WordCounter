@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lib
+namespace Lib.Analize
 {
     /// <summary>
     /// находит слова в одной строчке

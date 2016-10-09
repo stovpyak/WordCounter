@@ -3,7 +3,7 @@ using System.IO;
 using System.Text;
 using System.Threading;
 
-namespace Lib
+namespace Lib.Analize
 {
     /// <summary>
     /// обрабатывает один файл, а затем отправляет результат в очередь

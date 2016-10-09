@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Linq;
 
-namespace Lib
+namespace Lib.ResultSaver
 {
     public class ResultSaverToFile: ResultSaverBase
     {
