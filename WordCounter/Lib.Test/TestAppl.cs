@@ -110,7 +110,7 @@ namespace Lib.Test
             var resultSaver = new ResultSaverSpy();
             appl.Execute(resultSaver);
 
-            Assert.AreEqual(1493, resultSaver.Items.Count, "words count");
+            Assert.AreEqual(1454, resultSaver.Items.Count, "words count");
             var firstWord = resultSaver.Items.First();
             Assert.AreEqual("глава", firstWord.Word, "word");
             Assert.AreEqual(6, firstWord.Count, "count");
@@ -127,7 +127,7 @@ namespace Lib.Test
             var resultSaver = new ResultSaverSpy();
             appl.Execute(resultSaver);
 
-            Assert.AreEqual(1805, resultSaver.Items.Count, "words count");
+            Assert.AreEqual(1755, resultSaver.Items.Count, "words count");
         }
 
         [TestMethod]
@@ -136,7 +136,7 @@ namespace Lib.Test
             var resultSaver = new ResultSaverSpy();
             TestFourFiles(resultSaver);
 
-            Assert.AreEqual(1493, resultSaver.Items.Count, "words count");
+            Assert.AreEqual(1454, resultSaver.Items.Count, "words count");
             var firstWord = resultSaver.Items.First();
             Assert.AreEqual("глава", firstWord.Word, "word");
             Assert.AreEqual(24, firstWord.Count, "count");
@@ -151,10 +151,10 @@ namespace Lib.Test
 
             var actual = ReadFromFile(resultFileName);
 
-            Assert.AreEqual(1493, actual.Count, "words count");
+            Assert.AreEqual(1454, actual.Count, "words count");
             var firstWord = actual.First();
             Assert.AreEqual("в", firstWord.Word, "word");
-            Assert.AreEqual(440, firstWord.Count, "count");
+            Assert.AreEqual(448, firstWord.Count, "count");
         }
 
         [TestMethod]
@@ -167,12 +167,12 @@ namespace Lib.Test
             var resultSaver = new ResultSaverSpy();
             appl.Execute(resultSaver);
 
-            Assert.AreEqual(26479, resultSaver.Items.Count, "words count");
+            Assert.AreEqual(26425, resultSaver.Items.Count, "words count");
             var ordered = resultSaver.Items.OrderByDescending(w => w.Count).ToArray();
 
             var first = ordered[0];
             Assert.AreEqual("-", first.Word, "first word");
-            Assert.AreEqual(5040, first.Count, "first count");
+            Assert.AreEqual(5041, first.Count, "first count");
 
             var second = ordered[1];
             Assert.AreEqual("и", second.Word, "second word");
@@ -180,7 +180,7 @@ namespace Lib.Test
 
             var third = ordered[2];
             Assert.AreEqual("в", third.Word, "third word");
-            Assert.AreEqual(3616, third.Count, "third count");
+            Assert.AreEqual(3617, third.Count, "third count");
         }
 
         [TestMethod]
@@ -193,7 +193,7 @@ namespace Lib.Test
             var resultSaver = new ResultSaverSpy();
             appl.Execute(resultSaver);
 
-            Assert.AreEqual(8310, resultSaver.Items.Count, "words count");
+            Assert.AreEqual(8268, resultSaver.Items.Count, "words count");
             var ordered = resultSaver.Items.OrderByDescending(w => w.Count).ToArray();
 
             var first = ordered[0];
@@ -206,7 +206,7 @@ namespace Lib.Test
 
             var third = ordered[2];
             Assert.AreEqual("в", third.Word, "third word");
-            Assert.AreEqual(791, third.Count, "third count");
+            Assert.AreEqual(798, third.Count, "third count");
         }
 
         private void TestFourFiles(IResultSaver saver)

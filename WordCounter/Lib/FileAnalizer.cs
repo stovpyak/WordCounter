@@ -40,11 +40,6 @@ namespace Lib
 
         private void Run()
         {
-            // распознаватель слов пока "без изысков":
-            // если слово в скобках (, то считает его "другим"
-            // не распознает переносов на новую строку
-            // запятые и др. знаки препинания не учитывает
-            // ?
             var result = new WordsCount();
             using (var fs = new FileStream(_fileName, FileMode.Open, FileAccess.Read))
             {
