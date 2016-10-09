@@ -6,7 +6,7 @@ namespace Lib
     /// <summary>
     /// Вся логика здесь:
     /// есть три сущности: WordsCountQueue, FileAnalizer и Marger - они работают в разных потоках
-    /// FileAnalizer распознает слова в одном файле и результат добавляет в очередь
+    /// FileAnalizer`ы распознают слова в одном файле и результат добавляет в очередь (FileAnalizer-ов много)
     /// Marger извлекает результат анализа одного файла из очереди и добавляет его в "общий" результат
     /// </summary>
     public class Appl
@@ -33,7 +33,7 @@ namespace Lib
             _stopEvent.Wait();
 
             if (_wasException != null)
-                throw new Exception("Ошибка в дочернем потоке", _wasException);
+                throw new ApplicationException("Ошибка в дочернем потоке", _wasException);
 
             saver.Save();
         }
