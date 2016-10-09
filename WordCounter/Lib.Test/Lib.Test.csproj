@@ -53,6 +53,7 @@
     <Compile Include="FileNameSourceStub.cs" />
     <Compile Include="ResultSaverSpy.cs" />
     <Compile Include="TestAppl.cs" />
+    <Compile Include="TestLineAnalizer.cs" />
     <Compile Include="TestOneFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

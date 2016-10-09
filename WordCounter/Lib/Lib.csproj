@@ -45,13 +45,14 @@
     <Compile Include="IFileNamesSource.cs" />
     <Compile Include="IResultSaver.cs" />
     <Compile Include="IWords.cs" />
+    <Compile Include="LineAnalizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Marger.cs" />
     <Compile Include="ResultSaverBase.cs" />
-    <Compile Include="ResultSaveToFile.cs" />
-    <Compile Include="WordCount.cs" />
-    <Compile Include="WordCountQueue.cs" />
-    <Compile Include="WorkCountItem.cs" />
+    <Compile Include="ResultSaverToFile.cs" />
+    <Compile Include="WordsCount.cs" />
+    <Compile Include="WordsCountQueue.cs" />
+    <Compile Include="WordCountItem.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

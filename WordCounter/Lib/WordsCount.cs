@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Lib
 {
-    public class WordCount
+    public class WordsCount
     {
         private readonly Dictionary<string, int> _words = new Dictionary<string, int>();
 
@@ -16,11 +16,11 @@ namespace Lib
                 _words.Add(word, 1);
         }
 
-        public IList<WorkCountItem> Items
+        public IList<WordCountItem> Items
         {
             get
             {
-                return _words.Keys.Select(word => new WorkCountItem(word, _words[word])).ToList();
+                return _words.Keys.Select(word => new WordCountItem(word, _words[word])).ToList();
             }
         }
     }

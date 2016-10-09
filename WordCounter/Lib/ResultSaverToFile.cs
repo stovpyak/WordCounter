@@ -1,12 +1,13 @@
 ﻿using System.IO;
+using System.Linq;
 
 namespace Lib
 {
-    public class ResultSaveToFile: ResultSaverBase
+    public class ResultSaverToFile: ResultSaverBase
     {
         private readonly string _fileName;
 
-        public ResultSaveToFile(string resultFileName)
+        public ResultSaverToFile(string resultFileName)
         {
             _fileName = resultFileName;
         }
@@ -15,7 +16,8 @@ namespace Lib
         {
             using (var file = new StreamWriter(_fileName, false))
             {
-                foreach (var word in Words)
+                var ordered = Words.OrderByDescending(w => w.Value);
+                foreach (var word in ordered)
                 {
                     file.WriteLine($"{word.Key} {word.Value}");
                 }

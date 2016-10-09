@@ -13,11 +13,11 @@ namespace Lib.Test
             // Empty;
         }
 
-        public IList<WorkCountItem> Items
+        public IList<WordCountItem> Items
         {
             get
             {
-                return Words.Keys.Select(word => new WorkCountItem(word, Words[word])).ToList();
+                return Words.Keys.Select(word => new WordCountItem(word, Words[word])).ToList();
             }
         }
     }

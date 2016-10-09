@@ -11,10 +11,10 @@ namespace Lib
     public class FileAnalizer
     {
         private readonly string _fileName;
-        private readonly WordCountQueue _queue;
+        private readonly WordsCountQueue _queue;
         private readonly Action<Exception> _applExceptionHandler;
 
-        public FileAnalizer(string fileName, WordCountQueue queue, Action<Exception> applExceptionHandler)
+        public FileAnalizer(string fileName, WordsCountQueue queue, Action<Exception> applExceptionHandler)
         {
             _fileName = fileName;
             _queue = queue;
@@ -45,16 +45,16 @@ namespace Lib
             // не распознает переносов на новую строку
             // запятые и др. знаки препинания не учитывает
             // ?
-            var result = new WordCount();
+            var result = new WordsCount();
             using (var fs = new FileStream(_fileName, FileMode.Open, FileAccess.Read))
             {
-                using (var sr = new StreamReader(fs, Encoding.Default))
+                using (var sr = new StreamReader(fs, Encoding.Default)) 
                 {
-                    string[] separators = new string[] { " ", "\r\n", "\t", "\"" };
+                    var lineAnalizer = new LineAnalizer();
                     string line = null;
                     while ((line = sr.ReadLine()) != null)
                     {
-                        var words = line.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+                        var words = lineAnalizer.Pars(line);
                         foreach (var word in words)
                         {
                             result.AddWordFound(word.ToLower());

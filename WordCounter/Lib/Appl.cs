@@ -5,7 +5,7 @@ namespace Lib
 {
     /// <summary>
     /// Вся логика здесь:
-    /// есть три сущности: WordCountQueue, FileAnalizer и Marger - они работают в разных потоках
+    /// есть три сущности: WordsCountQueue, FileAnalizer и Marger - они работают в разных потоках
     /// FileAnalizer распознает слова в одном файле и результат добавляет в очередь
     /// Marger извлекает результат анализа одного файла из очереди и добавляет его в "общий" результат
     /// </summary>
@@ -21,7 +21,7 @@ namespace Lib
 
         public void Execute(IResultSaver saver)
         {
-            var queue = new WordCountQueue();
+            var queue = new WordsCountQueue();
             _stopEvent = new ManualResetEventSlim(false);
             var marger = new Marger(_fileNamesSource.FileNames.Count, queue, saver, _stopEvent, ApplExceptionHandler);
             foreach (var fileName in _fileNamesSource.FileNames)

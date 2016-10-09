@@ -9,13 +9,13 @@ namespace Lib
     public class Marger
     {
         private readonly int _fileCount;
-        private readonly WordCountQueue _queue;
+        private readonly WordsCountQueue _queue;
         private readonly IWords _totalResult;
         private readonly ManualResetEventSlim _stopEvent;
         private readonly Action<Exception> _applExceptionHandler;
         
 
-        public Marger(int fileCount, WordCountQueue queue, IWords totalResult, ManualResetEventSlim stopEvent, Action<Exception> applExceptionHandler)
+        public Marger(int fileCount, WordsCountQueue queue, IWords totalResult, ManualResetEventSlim stopEvent, Action<Exception> applExceptionHandler)
         {
             _fileCount = fileCount;
             _queue = queue;

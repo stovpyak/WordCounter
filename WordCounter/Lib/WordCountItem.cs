@@ -1,8 +1,8 @@
 ﻿namespace Lib
 {
-    public struct WorkCountItem
+    public struct WordCountItem
     {
-        public WorkCountItem(string word, int count)
+        public WordCountItem(string word, int count)
         {
             Word = word;
             Count = count;
