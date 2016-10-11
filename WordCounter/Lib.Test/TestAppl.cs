@@ -210,6 +210,69 @@ namespace Lib.Test
             Assert.AreEqual(798, third.Count, "third count");
         }
 
+        [TestMethod]
+        public void TestAnsi()
+        {
+            var fileSource = new FileNameSourceStub();
+            fileSource.Add(FileDir + "ansi.txt");
+
+            var appl = new Appl(fileSource);
+            var resultSaver = new ResultSaverSpy();
+            appl.Execute(resultSaver);
+
+            Assert.AreEqual(2, resultSaver.Items.Count, "words count");
+
+            var first = resultSaver.Items[0];
+            Assert.AreEqual("one", first.Word, "first word");
+            Assert.AreEqual(1, first.Count, "first count");
+
+            var second = resultSaver.Items[1];
+            Assert.AreEqual("один", second.Word, "second word");
+            Assert.AreEqual(1, second.Count, "second count");
+        }
+
+        [TestMethod]
+        public void TestUtf8()
+        {
+            var fileSource = new FileNameSourceStub();
+            fileSource.Add(FileDir + "utf8.txt");
+
+            var appl = new Appl(fileSource);
+            var resultSaver = new ResultSaverSpy();
+            appl.Execute(resultSaver);
+
+            Assert.AreEqual(2, resultSaver.Items.Count, "words count");
+
+            var first = resultSaver.Items[0];
+            Assert.AreEqual("one", first.Word, "first word");
+            Assert.AreEqual(1, first.Count, "first count");
+
+            var second = resultSaver.Items[1];
+            Assert.AreEqual("один", second.Word, "second word");
+            Assert.AreEqual(1, second.Count, "second count");
+        }
+
+        [TestMethod]
+        public void TestIso8859()
+        {
+            var fileSource = new FileNameSourceStub();
+            fileSource.Add(FileDir + "iso8859.txt");
+
+            var appl = new Appl(fileSource);
+            var resultSaver = new ResultSaverSpy();
+            appl.Execute(resultSaver);
+
+            Assert.AreEqual(2, resultSaver.Items.Count, "words count");
+
+            var first = resultSaver.Items[0];
+            Assert.AreEqual("one", first.Word, "first word");
+            Assert.AreEqual(1, first.Count, "first count");
+
+            var second = resultSaver.Items[1];
+            Assert.AreEqual("один", second.Word, "second word");
+            Assert.AreEqual(1, second.Count, "second count");
+        }
+
         private void TestFourFiles(IResultSaver saver)
         {
             var fileSource = new FileNameSourceStub();
